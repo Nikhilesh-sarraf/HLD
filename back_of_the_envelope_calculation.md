@@ -263,8 +263,210 @@ In interviews, follow this order:
 * Replication
 * Sharding
 
+---
 
-For system design interviews, a very common sequence to memorize is:
 
-**Users → DAU → Requests → RPS → Storage → Bandwidth → Cache → Servers**
+
+Good question. I skipped the **unit conversion step**, which is very important in back-of-the-envelope calculations.
+
+Let's break it down carefully.
+
+Given:
+
+* Total messages/day = **5 billion**
+* Size of each message = **100 bytes**
+
+Daily storage:
+
+[
+5B \times 100
+]
+
+Substitute:
+
+[
+5 \times 10^9 \times 100
+]
+
+Since:
+
+[
+100 = 10^2
+]
+
+So:
+
+[
+5 \times 10^9 \times 10^2
+]
+
+[
+=5 \times 10^{11}\ bytes
+]
+
+Now convert bytes → GB.
+
+In BOE calculations we approximate:
+
+[
+1GB \approx 10^9\ bytes
+]
+
+Therefore:
+
+[
+\frac{5\times10^{11}}{10^9}
+]
+
+[
+=5\times10^2
+]
+
+[
+=500GB
+]
+
+So:
+
+**Daily storage ≈ 500 GB/day**
+
+Now yearly storage:
+
+[
+500\times365
+]
+
+[
+=182,500GB
+]
+
+Convert GB → TB:
+
+[
+1TB\approx1000GB
+]
+
+[
+\frac{182,500}{1000}
+]
+
+[
+=182.5TB
+]
+
+So:
+
+**Yearly storage ≈ 182 TB/year**
+
+The flow you should memorize for interviews:
+
+**Messages × Size/message → Total bytes → Convert to GB/TB/PB**
+
+For example:
+
+* (10^6) → MB
+* (10^9) → GB
+* (10^{12}) → TB
+* (10^{15}) → PB
+
+That shortcut is why interviewers can quickly say:
+
+> "5 billion × 100 bytes → roughly 500 GB/day"
+
+without writing every conversion step.
+
+
+This is a very useful cheat sheet for **System Design Back-of-the-Envelope calculations**. Try to memorize it.
+
+# Data size units (Bytes)
+
+| Unit           |    Value | Power of 10 |
+| -------------- | -------: | ----------: |
+| Byte (B)       |        1 |      (10^0) |
+| Kilobyte (KB)  |  1,000 B |      (10^3) |
+| Megabyte (MB)  | 1,000 KB |      (10^6) |
+| Gigabyte (GB)  | 1,000 MB |      (10^9) |
+| Terabyte (TB)  | 1,000 GB |   (10^{12}) |
+| Petabyte (PB)  | 1,000 TB |   (10^{15}) |
+| Exabyte (EB)   | 1,000 PB |   (10^{18}) |
+| Zettabyte (ZB) | 1,000 EB |   (10^{21}) |
+
+**Interview approximation:**
+
+* KB → (10^3)
+* MB → (10^6)
+* GB → (10^9)
+* TB → (10^{12})
+* PB → (10^{15})
+
+*(Real computers often use 1024, but in system design interviews use 1000 for quick estimates.)*
+
+---
+
+# Number scale table
+
+| Name        |                Number | Power of 10 |
+| ----------- | --------------------: | ----------: |
+| Thousand    |                 1,000 |      (10^3) |
+| Million     |             1,000,000 |      (10^6) |
+| Billion     |         1,000,000,000 |      (10^9) |
+| Trillion    |     1,000,000,000,000 |   (10^{12}) |
+| Quadrillion | 1,000,000,000,000,000 |   (10^{15}) |
+
+---
+
+# Quick memory trick
+
+Notice the pattern:
+
+| Name        | Power |
+| ----------- | ----: |
+| Thousand    |    +3 |
+| Million     |    +6 |
+| Billion     |    +9 |
+| Trillion    |   +12 |
+| Quadrillion |   +15 |
+
+Every step increases by **3 powers**.
+
+---
+
+# Useful interview shortcuts
+
+| Value             | Shortcut     |
+| ----------------- | ------------ |
+| 1 Million users   | (10^6) users |
+| 100 Million users | (10^8) users |
+| 1 Billion users   | (10^9) users |
+| 1M requests/day   | ≈ 12 RPS     |
+| 10M requests/day  | ≈ 115 RPS    |
+| 100M requests/day | ≈ 1157 RPS   |
+| 1B requests/day   | ≈ 11.5K RPS  |
+
+---
+
+Example:
+
+If a system has:
+
+* 100M users = (10^8)
+* Each uploads 10MB = (10^7) bytes
+
+Storage:
+
+[
+10^8 \times 10^7
+]
+
+[
+=10^{15}
+]
+
+[
+=1PB
+]
+
+This is exactly how experienced system design candidates do quick calculations mentally.
+
+
 
