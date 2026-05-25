@@ -4,7 +4,7 @@ Back-of-the-envelope calculation (BOE) in System Design means doing **quick appr
 
 - How many users are there?
 - How much storage is needed?
-- How many requests per second (RPS)?
+- How many requests per second (RPS)??
 - How much bandwidth is required?
 - How many servers might be needed?
 
@@ -78,7 +78,7 @@ Peak\ RPS=115\times5
 
 ## 2. Storage calculation
 
-Formula:
+Formula::
 
 ```math
 Storage = Users \times Data\ per\ user
