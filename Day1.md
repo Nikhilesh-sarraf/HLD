@@ -1,3 +1,7 @@
+<img width="1280" height="910" alt="dns2" src="https://github.com/user-attachments/assets/68102ecb-eea9-4804-a4b7-c0931be6eab3" />
+<img width="1280" height="1021" alt="dns1" src="https://github.com/user-attachments/assets/1bb32be4-17eb-42c1-afff-0c0008c2a318" />
+
+
 # Sharding in HLD (High-Level Design)
 
 Sharding is one of the most important concepts in scalable system design.
